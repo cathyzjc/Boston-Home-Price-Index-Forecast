@@ -20,4 +20,4 @@ This project utilize R to compare the forecasting performance of two types of ti
    
 ### 3  Conclusion 
 
-ARIMA is the best model. It has the lowest validation RMSE, and according to Diebold/Mariano tests, it outperforms all other models. 
+ARIMA is the best model. It has the lowest validation RMSE, and according to Diebold/Mariano tests, it outperforms all other models. As the results of the study suggest, ARIMA is a useful technique to assess broad market price changes. Government and central bank can use ARIMA modelling approach to forecast national house price inflation. Developers can employ this methodology to drive successful house-building programme. Investor can incorporate forecasts from ARIMA models into investment strategy for timing purposes. 
