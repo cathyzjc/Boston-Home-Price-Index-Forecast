@@ -8,20 +8,16 @@
 
 ### Zhijiao Chen
 
-
+############################################################################################
 
 ### Part One: Data Visualization 
 
 # The time series I'm going to analyze is S&P/Case-Shiller MA-Boston Home Price Index. Since it is a seasonally adjusted time series, there's no seasonality in this time series.
 
 #     S&P/Case-Shiller MA-Boston Home Price Index
-  
-#     Source: S&P Dow Jones Indices LLC  
-  
-#     Release: S&P/Case-Shiller Home Price Indices  
-  
-#     Units:  Index Jan 2000=100, Seasonally Adjusted
-  
+#     Source: S&P Dow Jones Indices LLC    
+#     Release: S&P/Case-Shiller Home Price Indices    
+#     Units:  Index Jan 2000=100, Seasonally Adjusted 
 #     Frequency:  Monthly
 
 rm(list=ls())
@@ -42,9 +38,10 @@ Pacf(BOXRSA.ts)
 # From Figure 2 and Figure 3, we can see that ACF decays slowly while PACF drops rapidly. Note that the PACF plot has a significant spike only at lag 1. We can see a very obvious trend in this Seasonally Adjusted data.
 
 
+
+############################################################################################
+
 ### Part Two: Splitting the data
-
-
 
 # For this topic, I care about a long term trend of Boston Home Price Index. When dealing with these topics, a train/validation structure is better, and I can predict for a period of time. So I chose use a train/validation structure.
 
@@ -59,6 +56,7 @@ nValid <- length(BOXRSA.valid)
 
 
 
+############################################################################################
 
 ### Part Three: ARIMA model
 
@@ -103,7 +101,7 @@ grid()
 
 print(accuracy(BOXRSA.arima.fcast,BOXRSA.valid))
 
-
+############################################################################################
 
 ### Part Four: Basic Holt filter method
 
@@ -117,7 +115,7 @@ grid()
 print(accuracy(ses.pred,BOXRSA.valid))
 
 
-
+############################################################################################
 
 ### Part Five: Baseline 
 
@@ -129,7 +127,7 @@ print(accuracy(ses.pred,BOXRSA.valid))
 
 # First, estimate addiive trend/seasonal filter
 train.lm <- tslm(BOXRSA.train ~ trend )
-# Now, build forecasts for validation periods
+#        Now, build forecasts for validation periods
 train.lm.pred <- forecast(train.lm, h=nValid, level=95)
 
 # plot all the results
@@ -179,7 +177,7 @@ RMSE %>%
 
 # So it's clear that ARIMA(d=1) is the best model to forecast MA-Boston Home Price Index with a RMSE only 7.943.
 
-
+############################################################################################
 
 ### Part Six: Compare ARIMA with Simple Linear model: Diebold/Mariano
 
